@@ -1,0 +1,134 @@
+---
+title: "Chapter 1 Notes"
+format: html
+editor: visual
+---
+
+## Aaron Freeman | Jan 30th, 2024
+### swcarpentry r-novice tutorial
+#### https://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro.html#before-starting-the-workshop
+
+### Mathematical functions
+
+R can do a lot of math, most basic is arithmetic. Here is the syntax for symbols:
+
+  Parentheses: (, )
+  
+  Exponents: ^ or **
+  
+  Multiply: *
+  
+  Divide: /
+  
+  Add: +
+  
+  Subtract: -
+
+R can also do more advanced math functions
+```{r}
+sin(1)
+```
+```{r}
+log(1)
+```
+```{r}
+exp(0.5)
+```
+
+### Comparing things
+
+```{r}
+1 == 1  # equality (note two equals signs, read as "is equal to")
+```
+```{r}
+1 != 2  # inequality (read as "is not equal to")
+```
+```{r}
+1 < 2  # less than
+```
+```{r}
+1 <= 1  # less than or equal to
+```
+```{r}
+1 > 0  # greater than
+```
+```{r}
+1 >= -9 # greater than or equal to
+```
+
+### Variables and assignment
+Store values in variables using the assignment operator <-
+
+```{r}
+x <- 1/40
+```
+
+Now that x has been assigned 1/40, we can call that variable at any time.
+
+```{r}
+x
+```
+
+We can use that variable in equations
+
+```{r}
+log(x)
+```
+
+You can rewrite and change that variable at any time using the assign operator <-
+
+Variable names can contain letters, numbers, underscores and periods but no spaces. They must start with a letter or a period followed by a letter (they cannot start with a number nor an underscore).
+
+  * periods.between.words
+  * underscores_between_words
+  * camelCaseToSeparateWords
+
+### Vectorization
+
+R is vectorized, meaning variables and functions can have vectors as values. A vector in R describes a set of values in a certain order of the same data type. For Example:
+
+```{r}
+1:5
+```
+```{r}
+2^(1:5)
+```
+```{r}
+z <- 1:5
+2^z
+```
+
+### Managing your environment
+
+These useful commands will help keep organized 
+
+ls will list all of the variables and functions store in the R session
+
+```{r}
+ls()
+```
+
+Use rm to delete objects you no longer need
+
+```r
+rm(x)
+```
+
+To delete everything in you environment, combine ls and rm function
+
+```r
+rm(list =ls())
+```
+
+### R Packages
+R packages add new functions to R.
+
+    *You can see what packages are installed by typing installed.packages()
+    *You can install packages by typing install.packages("packagename"), where packagename is the package name, in quotes.
+    *You can update installed packages by typing update.packages()
+    *You can remove a package with remove.packages("packagename")
+    *You can make a package available for use with library(packagename)
+
+
+
+  
