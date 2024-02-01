@@ -1,0 +1,59 @@
+---
+title: "Chapter 2 Notes"
+format: html
+editor: visual
+---
+
+## Aaron Freeman \| Feb 1st, 2024
+
+### swcarpentry r-novice tutorial
+
+#### https://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro.html#before-starting-the-workshop
+
+### Seeking Help with R
+
+#### Reading Help Files
+
+R and packages provide help files for functions. To search for the syntax on any function "function_name" in your package run this code:
+
+```r
+?function_name
+help(function_name)
+```
+
+To look at the help file for write.table() use a similar function
+
+```r
+?write.table()
+```
+
+This command will load up a help page in RStudio
+
+Each help page is broken down into sections:
+
+  * Description: Description of what the function does
+  * Usage: The arguments of the function and their default values
+  * Arguments: An explanation of the data each argument is expecting.
+  * Details: Any notable details
+  * Value: The data the function returns
+  * See Also: Any related functions you might find useful
+  * Examples: Some examples of how to use the function
+  
+Some functions might call for the same help file, for example 
+
+```r
+?write.table()
+?write.csv()
+```
+
+This is because these functions have similar applicability so the package author choose to document them together in a single help file.
+
+#### Special Operators
+
+To seek help on special operators, use quotes or backticks:
+
+```r
+?"<-"
+?`<-`
+```
+
