@@ -1,0 +1,93 @@
+---
+title: "Chapter 1 R for Ecology Notes"
+format: html
+editor: visual
+---
+
+## Aaron Freeman | Feb. 5th, 2024
+
+## R packages information
+
+#### http://www.sthda.com/english/wiki/installing-and-using-r-packages
+
+### Installing a package from CRAN
+
+```r
+install.packages("package_name")
+```
+
+### Installing a package from Bioconductor
+
+Bioconductor contains packages for analyzing biological related data. In the following R code, we want to install the R/Bioconductor package limma, which is dedicated to analyse genomic data.
+
+To install a package from Bioconductor, use this:
+
+```r
+source("https://bioconductor.org/biocLite.R")
+biocLite("limma")
+```
+
+### Install a package from GitHub
+
+To install a package from GitHub, the R package devtools (by Hadley Wickham) can be used. You should first install devtools if you don’t have it installed on your computer.
+
+For example, the following R code installs the latest version of survminer R package developed by A. Kassambara (https://github.com/kassambara/survminer).
+
+```r
+install.packages("devtools")
+devtools::install_github("kassambara/survminer")
+```
+### View the list of installed packages
+
+To view the list of the already installed packages on your computer, type:
+
+```r
+installed.packages()
+```
+
+### Folder containing installed packages
+
+R packages are installed in a directory called library. The R function .libPaths() can be used to get the path to the library.
+
+```r
+.libpaths()
+```
+
+### Load and use an R package
+
+To use a specific function available in an R package, you have to load the R package using the function library().
+
+The function read_tsv() [in readr] can be used to import a tab separated .txt file:
+
+```r
+# Import my data
+library("readr")
+my_data <- read_tsv("http://www.sthda.com/upload/decathlon.txt")
+# View the first 6 rows and tge first 6 columns
+# syntax: my_data[row, column]
+my_data[1:6, 1:6]
+```
+
+### View loaded R packages
+
+To view the list of loaded (or attached) packages during an R session, use the function search():
+
+```r
+search()
+```
+
+if you’re done with the package readr and you want to unload it, use the function detach():
+
+```r
+detach("readr", unload = TRUE)
+```
+
+### Update installed packages
+
+If you want to update all installed R packages, type this:
+
+```r
+update.packages()
+```
+
+
