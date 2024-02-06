@@ -1,0 +1,96 @@
+---
+title: "Chapter 2 Notes"
+format: html
+editor: visual
+---
+
+## Aaron Freeman \| Feb 1st, 2024
+
+### swcarpentry r-novice tutorial
+
+#### https://swcarpentry.github.io/r-novice-gapminder/04-data-structures-part1.html
+
+### Data Structures
+
+#### Overview
+
+One of R's most powerful features is the ability to deal with tabular data. Such as a csv file. Let's start by making a fake dataset in the data/directory, called feline-data.csv
+
+```r
+cats <- data.frame(coat = c("calico", "black", "tabby"),
+                   weight = c(2.1, 5.0, 3.2),
+                   likes_string = c(1, 0, 1))
+```
+
+Now we have to save the cats as a csv. We are setting row.names = FALSE. Use ?write.csv to pull up the help file
+
+```r
+write.csv(x = cats, file = "data/feline-data.csv", row.names = FALSE)
+```
+
+New contents of the file, feline-data.csv:
+
+```r
+coat,weight,likes_string
+calico,2.1,1
+black,5.0,0
+tabby,3.2,1
+```
+
+We can load this into R via the following:
+
+```r
+cats <- read.csv(file = "Data/feline-data.csv")
+cats
+```
+
+We can begin exploring our dataset right away, pulling out columns by specifying them using the $ operator:
+
+```r
+cats$weight
+```
+
+```r
+cats$coat
+```
+
+We can do other operations
+
+```r
+cats$weight + 2
+```
+
+```r
+paste("my cat is", cats$coat)
+```
+
+### Datatypes
+
+Type this to check the data type
+
+```r
+typeof(cats$weight)
+```
+
+There are 5 main types: double, integer, complex, logical, and character. For historic reasons, double is also called numeric.
+
+```{r}
+typeof(3.14)
+```
+
+```{r}
+typeof(1L) # The L suffix forces the number to be an integer, by default R uses float numbers
+```
+
+```{r}
+typeof(1+1i)
+```
+
+```{r}
+typeof(TRUE)
+```
+
+```{r}
+typeof('banana')
+```
+
