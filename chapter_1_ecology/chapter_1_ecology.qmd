@@ -1,0 +1,168 @@
+---
+title: "Chapter 1 R for Ecology Notes"
+format: html
+editor: visual
+---
+
+## Aaron Freeman | Feb. 5th, 2024
+
+## R-ecology-lesson intro to r
+
+#### https://datacarpentry.org/R-ecology-lesson/01-intro-to-r.html#vectors-and-data-types
+
+### Vectors and data types
+
+A vector is composed by a series of values, which can be either numbers or characters. We can assign a series of values to a vector using the c() function, for example:
+
+```{r}
+weight_g <- c(50, 60, 65, 82)
+weight_g
+```
+
+Vectors can also contain characters (use quotes).
+
+```{r}
+animals <- c("mouse", "rat", "dog")
+animals
+```
+
+There are functions that allow you to inspect the content of a vector. length() tells you how many elements are in a particular vector:
+
+```{r}
+length(weight_g)
+length(animals)
+```
+
+class() indicates what kind of object you are working with:
+
+```{r}
+class(weight_g)
+class(animals)
+```
+
+str() provides an overview of the structure of an object and its elements. Useful when working with large and complex objects:
+
+```{r}
+str(weight_g)
+str(animals)
+```
+
+You can use the c() function to add other elements to your vector:
+
+```{r}
+weight_g <- c(weight_g, 90) # add to the end of the vector
+weight_g <- c(30, weight_g) # add to the beginning of vector
+weight_g
+```
+
+An atomic vector is the simplest R data type and is a linear vector of a single type. Above we saw 2 of the 6 main atomic vector types that R uses: "character" and "numeric" (or "double"). The other 4 atomic vector types are:
+
+  ** "logical" for TRUE and FALSE (the boolean data type)
+  ** "integer" for integer numbers (e.g., 2L, the L indicates to R that it's an integer)
+  ** "complex" to represent complex numbers with real and imaginary parts (e.g., 1 + 4i) and thats all we're going to say about that.
+  ** "raw" for bitstreams that we won't discuss further
+
+Check the type of vector using the typeof() function
+
+Vectors are one of the many data structures that R uses. Other important ones are lists (list), matrices (matrix), data frames (data.frame), factors (factor) and arrays (array).
+
+### Subsetting vectors
+
+```{r}
+animals <- c("mouse", "rat", "dog", "cat")
+animals[2]
+```
+
+```{r}
+animals[c(3,2)]
+```
+
+```{r}
+more_animals <- animals[c(1, 2, 3, 2, 1, 4)]
+more_animals
+```
+
+R indices start at 1.
+
+### Conditional subsetting
+
+```{r}
+weight_g <- c(21, 34, 39, 54, 55)
+weight_g[c(TRUE, FALSE, FALSE, TRUE, TRUE)]
+```
+
+Typically, these logical vectors are not typed by hand, but are the output of other functions or logical tests. For instance, if you wanted to select only the values above 50:
+
+```{r}
+weight_g > 50 # will return logicals with true for the indices that meet the criteria
+```
+
+```{r}
+## we can use this to select only the values above 50
+weight_g[weight_g > 50]
+```
+
+You can combine multiple tests using & (both conditions are true, AND) or | (at least one of the conditions is true, OR):
+
+```{r}
+weight_g[weight_g > 30 & weight_g < 50]
+```
+
+```{r}
+weight_g[weight_g <= 30 | weight_g == 55]
+```
+
+```{r}
+weight_g[weight_g >= 30 & weight_g == 21]
+```
+
+A common task is to search for certain strings in a vector. One could use the "or" operator | to test for equality to multiple values, but this can quickly become tedious. The function %in% allows you to test if any of the elements of a search vector are found:
+
+```{r}
+animals <- c("mouse", "rat", "dog", "cat", "cat")
+
+# return both rat and cat
+animals[animals == "cat" | animals == "rat"]
+```
+
+```{r}
+# return a logical vector that is TRUE for the elements within animals
+# that are found in the character vector and FALSE for those that are not
+animals %in% c("rat", "cat", "dog", "duck", "goat", "bird", "fish")
+```
+
+```{r}
+# use the logical vector created by %in% to return elements from animals
+# that are found in the character vector
+animals[animals %in% c("rat", "cat", "dog", "duck", "goat", "bird", "fish")]
+```
+
+### Missing Data
+
+As R was designed to analyze datasets, it includes the concept of missing data. Missing data are represented in vectors as NA.
+
+When doing operations on numbers, most functions will return NA if the data you are working with include missing values. This feature makes it harder to overlook the cases where you are dealing with missing data. You can add the argument na.rm = TRUE to calculate the result as if the missing values were removed (rm stands for ReMoved) first.
+
+```{r}
+heights <- c(2, 4, 4, NA, 6)
+mean(heights)
+max(heights)
+mean(heights, na.rm = TRUE)
+max(heights, na.rm = TRUE)
+```
+
+If your data include missing values, you may want to become familiar with the functions is.na(), na.omit(), and complete.cases(). See below for examples.
+
+```{r}
+## Extract those elements which are not missing values.
+heights[!is.na(heights)]
+
+## Returns the object with incomplete cases removed.
+#The returned object is an atomic vector of type `"numeric"` (or #`"double"`).
+na.omit(heights)
+
+## Extract those elements which are complete cases.
+#The returned object is an atomic vector of type `"numeric"` (or #`"double"`).
+heights[complete.cases(heights)]
+```
+
