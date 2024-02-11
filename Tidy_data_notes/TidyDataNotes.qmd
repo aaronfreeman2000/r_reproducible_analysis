@@ -1,0 +1,51 @@
+---
+title: "Tidy Data Notes"
+format: html
+editor: visual
+---
+
+## Aaron Freeman | Feb 11th, 2024
+
+### Tidy Data by Hardley Wickham
+
+#### https://vita.had.co.nz/papers/tidy-data.pdf
+
+### Abstract + Intro
+
+  * This paper is about setting up data in specific structures.
+  * Each variable is a column, each observation is a row, and each observational unit is a table.
+  * The point of this is to eliminate countless hours of frustrating, mundane organizational tasks.
+  
+### Defining Tidy Data
+
+  * Organize vertically
+  * Understand variables, observations, and values
+  * Name, Treatment, Result = Variable | Observation = John, a, 16 | Value = John or a or 16
+
+### Tidying messy dataset
+
+#### Some common messups
+
+  * Column headers are values, not variable names
+  * Multiple variables are stored in one column
+  * Variables are stored in both rows and columns.
+  * Multiple types of observational units are store in the same table.
+  * A single observational unit is stored in multiple tables
+  
+#### Melt / Stack dataset / Split
+
+  * Turn columns into rows.
+  * Molten data is consolidating the data
+  * Sometimes splitting is required when too much data is compiled into one colum (two variables)
+  
+### Types of data manipulation 
+  * Filter: subsetting or removing observations based on some condition.
+  * Transform: adding or modifying variables. These modifications can involve either a
+    single variable (e.g., log-transformation), or multiple variables (e.g., computing density
+    from weight and volume).
+  * Aggregate: collapsing multiple values into a single value (e.g., by summing or taking
+    means).
+  * Sort: changing the order of observations.
+  
+
+
