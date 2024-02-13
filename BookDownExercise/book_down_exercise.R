@@ -195,7 +195,7 @@ tempdf %>%
          !is.na(y), #remove obs with missing y
          !is.na(z)) # remove obs with missing z
 
-#Some code will executre a filter that will permit only rows with entire
+#Some code will execute a filter that will permit only rows with entire
 # data in x to pass through
 
 tempdf %>%
